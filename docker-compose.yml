@@ -12,6 +12,13 @@ services:
       - "9300:9300"
     environment:
       ES_JAVA_OPTS: "-Xmx8g -Xms8g"
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+      nofile:
+        soft: 65536
+        hard: 65536
     networks:
       - elk
 
