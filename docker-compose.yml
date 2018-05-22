@@ -12,8 +12,8 @@ services:
       - "9300:9300"
     environment:
       ES_JAVA_OPTS: "-Xmx8g -Xms8g"
-      node.master: true
-      node.data: false
+      node.master: "true"
+      node.data: "false"
       node.name: ${HOSTNAME}
       network.publish_host: ${HOSTNAME} #elastic-2
       network.host: _site_
@@ -40,8 +40,8 @@ services:
       - "9300:9300"
     environment:
       ES_JAVA_OPTS: "-Xmx8g -Xms8g"
-      node.master: false
-      node.data: true
+      node.master: "false"
+      node.data: "true"
       node.name: ${HOSTNAME}
       discovery.zen.ping.unicast.hosts: "elastic-master.gsgr"
       network.publish_host: ${HOSTNAME} #elastic-2
