@@ -19,8 +19,8 @@ services:
       nofile:
         soft: 65536
         hard: 65536
-    networks:
-      - elk
+    #networks:
+    #  - elk
 
   logstash:
     build:
@@ -32,8 +32,8 @@ services:
       - "5000:5000"
     environment:
       LS_JAVA_OPTS: "-Xmx256m -Xms256m"
-    networks:
-      - elk
+#    networks:
+#      - elk
     depends_on:
       - elasticsearch
 
@@ -44,12 +44,12 @@ services:
       - ./kibana/config/:/usr/share/kibana/config:ro
     ports:
       - "5601:5601"
-    networks:
-      - elk
+#    networks:
+#      - elk
     depends_on:
       - elasticsearch
 
-networks:
+#networks:
 
-  elk:
-    driver: bridge
+#  elk:
+#    driver: bridge
