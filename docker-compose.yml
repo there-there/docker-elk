@@ -1,6 +1,32 @@
 version: '2'
 
 services:
+
+  elasticsearch-master:
+    build:
+      context: elasticsearch/
+    volumes:
+      - ./elasticsearch/config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml:ro
+    ports:
+      - "9200:9200"
+      - "9300:9300"
+    environment:
+      ES_JAVA_OPTS: "-Xmx8g -Xms8g"
+      node.name: ${HOSTNAME}
+      network.publish_host: ${HOSTNAME} #elastic-2
+      network.host: _site_
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+      nofile:
+        soft: 65536
+        hard: 65536
+    extra_hosts:
+      - "elastic-1.gsgr:172.31.11.4"
+      - "elastic-2.gsgr:172.31.1.136"
+    networks:
+      - elk
   elasticsearch:
     build:
       context: elasticsearch/
