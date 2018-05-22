@@ -28,7 +28,7 @@ services:
       - "elastic-master.gsgr:172.31.2.52"
       - "elastic-1.gsgr:172.31.11.4"
       - "elastic-2.gsgr:172.31.1.136"
-      - "elastic-2.gsgr:172.31.0.62"
+      - "elastic-3.gsgr:172.31.0.62"
     networks:
       - elk
   elasticsearch:
@@ -58,7 +58,7 @@ services:
       - "elastic-master.gsgr:172.31.2.52"
       - "elastic-1.gsgr:172.31.11.4"
       - "elastic-2.gsgr:172.31.1.136"
-      - "elastic-2.gsgr:172.31.0.62"
+      - "elastic-3.gsgr:172.31.0.62"
     networks:
       - elk
 
