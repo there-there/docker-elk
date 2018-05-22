@@ -12,6 +12,8 @@ services:
       - "9300:9300"
     environment:
       ES_JAVA_OPTS: "-Xmx8g -Xms8g"
+      node.master: true
+      node.data: false
       node.name: ${HOSTNAME}
       network.publish_host: ${HOSTNAME} #elastic-2
       network.host: _site_
@@ -25,6 +27,7 @@ services:
     extra_hosts:
       - "elastic-1.gsgr:172.31.11.4"
       - "elastic-2.gsgr:172.31.1.136"
+      - "elastic-2.gsgr:172.31.0.62"
     networks:
       - elk
   elasticsearch:
@@ -37,8 +40,10 @@ services:
       - "9300:9300"
     environment:
       ES_JAVA_OPTS: "-Xmx8g -Xms8g"
+      node.master: false
+      node.data: true
       node.name: ${HOSTNAME}
-      discovery.zen.ping.unicast.hosts: "elastic-1.gsgr,elastic-2.gsgr"
+      discovery.zen.ping.unicast.hosts: "elastic-master.gsgr"
       network.publish_host: ${HOSTNAME} #elastic-2
       network.host: _site_
     ulimits:
@@ -49,8 +54,7 @@ services:
         soft: 65536
         hard: 65536
     extra_hosts:
-      - "elastic-1.gsgr:172.31.11.4"
-      - "elastic-2.gsgr:172.31.1.136"
+      - "elastic-master.gsgr:172.31.2.52"
     networks:
       - elk
 
