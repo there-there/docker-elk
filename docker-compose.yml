@@ -13,6 +13,7 @@ services:
     hostname: ${HOSTNAME}
     environment:
       ES_JAVA_OPTS: "-Xmx8g -Xms8g"
+      node.name: ${HOSTNAME}
     ulimits:
       memlock:
         soft: -1
