@@ -1,7 +1,6 @@
 version: '2'
 
 services:
-
   elasticsearch:
     build:
       context: elasticsearch/
@@ -10,12 +9,11 @@ services:
     ports:
       - "9200:9200"
       - "9300:9300"
-    hostname: ${HOSTNAME}
     environment:
       ES_JAVA_OPTS: "-Xmx8g -Xms8g"
       node.name: ${HOSTNAME}
       discovery.zen.ping.unicast.hosts: "elastic-1.gsgr"
-      network.publish_host: elastic-2.gsgr 
+      network.publish_host: ${HOSTNAME} #elastic-2
       network.host: _site_
     ulimits:
       memlock:
@@ -27,8 +25,8 @@ services:
     extra_hosts:
       - "elastic-1.gsgr:172.31.11.4"
       - "elastic-2.gsgr:172.31.1.136"
-    #networks:
-    #  - elk
+    networks:
+      - elk
 
   logstash:
     build:
@@ -57,7 +55,7 @@ services:
     depends_on:
       - elasticsearch
 
-#networks:
+networks:
 
-#  elk:
-#    driver: bridge
+  elk:
+    driver: bridge
