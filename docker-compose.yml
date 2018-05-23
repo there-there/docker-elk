@@ -92,8 +92,11 @@ services:
       - elk
     depends_on:
       - elasticsearch-master
-
+      
+volumes:
+  elastic-data:
+    driver: local
+    
 networks:
-
   elk:
     driver: bridge
