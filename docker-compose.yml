@@ -36,7 +36,7 @@ services:
       context: elasticsearch/
     volumes:
       - ./elasticsearch/config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml:ro
-      - /home/ec2-user/elastic-data:/usr/share/elasticsearch/data
+      - elastic-data:/usr/share/elasticsearch/data
     ports:
       - "9200:9200"
       - "9300:9300"
