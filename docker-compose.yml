@@ -29,6 +29,11 @@ services:
       - "elastic-1.gsgr:172.31.11.4"
       - "elastic-2.gsgr:172.31.1.136"
       - "elastic-3.gsgr:172.31.0.62"
+      - "elastic-4.gsgr:172.31.28.150"
+      - "elastic-5.gsgr:172.31.17.175"
+      - "elastic-6.gsgr:172.31.5.216"
+      - "elastic-7.gsgr:172.31.7.172"
+      - "elastic-8.gsgr:172.31.13.255"
     networks:
       - elk
   elasticsearch:
@@ -63,6 +68,9 @@ services:
       - "elastic-3.gsgr:172.31.0.62"
       - "elastic-4.gsgr:172.31.28.150"
       - "elastic-5.gsgr:172.31.17.175"
+      - "elastic-6.gsgr:172.31.5.216"
+      - "elastic-7.gsgr:172.31.7.172"
+      - "elastic-8.gsgr:172.31.13.255"
     networks:
       - elk
 
