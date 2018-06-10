@@ -73,6 +73,7 @@ services:
       - "elastic-8.gsgr:172.31.13.255"
     networks:
       - elk
+    #before lunch sudo sysctl -w vm.max_map_count=262144
 
   logstash:
     build:
